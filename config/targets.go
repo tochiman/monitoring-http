@@ -14,8 +14,7 @@ type HttpConfig struct {
 
 func HttpTargets() []HttpConfig {
 	return []HttpConfig{
-		HttpConfig{Name: "Google", Host: "google.com", Path: "/", Proto: "http", Domain: "google.com"},
-		HttpConfig{Name: "Google", Host: "google.com", Path: "/no-such-path", Proto: "http", Domain: "google.com"},
-		HttpConfig{Name: "NiseGoogle", Host: "nisegoogle.com", Path: "/", Proto: "http", Domain: "nisegoogle.com"},
+		HttpConfig{Name: "Nextcloud", Host: "nextcloud.tochiman.com", Path: "/", Proto: "https", Domain: "nextcloud.tochiman.com"},
+		HttpConfig{Name: "CodiMD", Host: "codimd.tochiman.com", Path: "/", Proto: "https", Domain: "codimd.tochiman.com"},
 	}
 }

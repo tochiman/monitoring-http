@@ -1,13 +1,10 @@
-# ステージ１
-FROM golang:1.18.1-alpine3.15 AS go
-WORKDIR /app
-COPY app/* ./
-RUN go mod download 
-RUN go build -o main ./src/main.go
+FROM golang:1.19-alpine as go
+ENV CGO_ENABLED 0
+WORKDIR /go/src
+RUN apk update && apk add git
+COPY ./ ./
+RUN go mod download && go build -o /go/bin/main ./main.go
 
-# ステージ２
-FROM alpine:3.15
-WORKDIR /app
-COPY --from=go /app/main .
-USER 1001
-CMD [ "/app/main" ]
+FROM gcr.io/distroless/static-debian11
+COPY --from=go /go/bin/main /
+CMD ["/main"]

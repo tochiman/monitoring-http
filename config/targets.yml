@@ -1,0 +1,21 @@
+targets:
+  CodiMD:
+    Namespace: "monitoring_http"
+    Name: "CodiMD"
+    Help:  "Status of CodiMD Service"
+    URL: "https://codimd.tochiman.com/"
+  Nextcloud:
+    Namespace: "monitoring_http"
+    Name: "Nextcloud"
+    Help:  "Status of Nextcloud Service"
+    URL: "https://nextcloud.tochiman.com/"
+  Proxmox:
+    Namespace: "monitoring_http"
+    Name: "proxmox"
+    Help:  "Status of proxmox Service"
+    URL: "https://pve.tochiman.com/"
+  argo:
+    Namespace: "monitoring_http"
+    Name: "argocd"
+    Help:  "Status of argo Service"
+    URL: "https://argocd.tochiman.com/"

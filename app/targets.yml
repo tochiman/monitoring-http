@@ -14,8 +14,3 @@ targets:
     Name: "proxmox"
     Help:  "Status of proxmox Service"
     URL: "https://pve.tochiman.com/"
-  argo:
-    Namespace: "monitoring_http"
-    Name: "argocd"
-    Help:  "Status of argo Service"
-    URL: "https://argocd.tochiman.com/"

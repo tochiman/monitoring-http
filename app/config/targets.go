@@ -18,7 +18,7 @@ type TargetConfig struct {
 }
 
 func GetTargets() TargetConfig {
-	ymlPath := "./config/targets.yml"
+	ymlPath := "targets.yml"
 
 	ymlData, err := ioutil.ReadFile(ymlPath)
 	if err != nil {

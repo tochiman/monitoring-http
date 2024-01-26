@@ -7,7 +7,7 @@ RUN go mod download && go build -o /go/bin/main ./main.go
 
 FROM gcr.io/distroless/static-debian11
 COPY --from=go /go/bin/main /
-COPY --from=go /go/src/config/targets.yml /config/targets.yml
+COPY --from=go /go/src/targets.yml targets.yml
 
 EXPOSE 8080
 CMD ["/main"]

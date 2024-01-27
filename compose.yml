@@ -8,6 +8,8 @@ services:
     restart: always
     ports:
       - 8080:8080
+    volumes:
+      - ./targets.yml:/targets.yml
     environment:
       TZ: Asia/Tokyo
       ExecutionInterval: 1

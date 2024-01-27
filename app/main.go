@@ -124,7 +124,7 @@ func main() {
 	for {
 		select {
 		case <-ticker.C:
-			log.Printf("info: %d回目の定期実行します", cont)
+			log.Printf("info: %dth regular run.", cont)
 			// gauge用の配列数
 			var contGauge int = 0
 			//定期実行する関数

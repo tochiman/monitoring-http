@@ -1,0 +1,6 @@
+targets:
+  Google:
+    Namespace: "test"
+    Name: "Google"
+    Help:  "Status of Google Service"
+    URL: "https://google.com/"

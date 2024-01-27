@@ -1,6 +1,16 @@
 targets:
-  Google:
-    Namespace: "test"
-    Name: "Google"
-    Help:  "Status of Google Service"
-    URL: "https://google.com/"
+  CodiMD:
+    Namespace: "monitoring_http"
+    Name: "CodiMD"
+    Help:  "Status of CodiMD Service"
+    URL: "https://codimd.tochiman.com/"
+  Nextcloud:
+    Namespace: "monitoring_http"
+    Name: "Nextcloud"
+    Help:  "Status of Nextcloud Service"
+    URL: "https://nextcloud.tochiman.com/"
+  netbox:
+    Namespace: "monitoring_http"
+    Name: "netbox"
+    Help:  "Status of netbox Service"
+    URL: "https://ipam.tochiman.com/"

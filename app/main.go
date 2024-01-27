@@ -70,9 +70,10 @@ func check_server(targetPath string) int {
 		resp, err := client.Do(req)
 		if err != nil {
 			log.Printf("error: %v", err)
-
 			return 0
 		}
+
+		defer resp.Body.Close()
 
 		if resp.StatusCode != 200 {
 			errorNum += 1
@@ -83,7 +84,6 @@ func check_server(targetPath string) int {
 			return 1
 		}
 
-		defer resp.Body.Close()
 	}
 
 	if errorMessage != "" {
@@ -119,31 +119,26 @@ func main() {
 
 	// 実行回数の記録
 	var cont int = 1
-	//prometheusのGauge用配列
-	var gauge []prometheus.Gauge
+	var gauge = map[string]prometheus.Gauge{}
 	for {
 		select {
 		case <-ticker.C:
 			log.Printf("info: %dth regular run.", cont)
-			// gauge用の配列数
-			var contGauge int = 0
 			//定期実行する関数
-			for _, target := range targetConfig.Targets {
+			for targetName, target := range targetConfig.Targets {
 				log.Printf("info: target: %v", target.Name)
-				result := check_server(target.URL)
 				if cont == 1 {
-					// append(gauge, )
-					gauge = append(gauge, prometheus.NewGauge(prometheus.GaugeOpts{
+					gauge[targetName] = prometheus.NewGauge(prometheus.GaugeOpts{
 						Namespace: target.Namespace,
 						Name:      target.Name,
 						Help:      target.Help,
-					}))
+					})
 
 					// 例えば、Prometheusに登録する場合
-					prometheus.MustRegister(gauge[contGauge])
+					prometheus.MustRegister(gauge[targetName])
 				}
-				gauge[contGauge].Set(float64(result))
-				contGauge++
+				result := check_server(target.URL)
+				gauge[targetName].Set(float64(result))
 			}
 			cont++
 		}

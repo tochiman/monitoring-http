@@ -4,6 +4,7 @@ services:
     build:
       context: ./app
       dockerfile: Dockerfile
+    # image: tochiman/monitoring-http:v1.0.0
     container_name: monitoring-http
     restart: always
     ports:

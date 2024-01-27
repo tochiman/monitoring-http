@@ -1,6 +1,7 @@
 # ステージ1(build)
 # Goのイメージを指定
 FROM golang:1.19-alpine as go
+ENV CGO_ENABLED 0
 # ローカルにあるコードをコンテナ内に格納する場所に作成と移動
 WORKDIR /go/src
 # コンテナ内のアップデートとGitを使用するためダウンロード
